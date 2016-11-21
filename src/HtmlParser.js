@@ -1,5 +1,6 @@
 import htmlparser2 from 'htmlparser2';
 import ProcessNodes from './utils/ProcessNodes';
+import React from 'react';
 
 /**
  * Parses a HTML string and returns a list of React components generated from it
@@ -10,4 +11,5 @@ import ProcessNodes from './utils/ProcessNodes';
 export default function HtmlParser(html) {
   const nodes = htmlparser2.parseDOM(html);
   return ProcessNodes(nodes);
+  //return MediaPlayer;
 }

@@ -33,6 +33,29 @@ export default function ProcessNodes(nodes) {
 
   return nodes
     .filter(filterOutEmptyTextNodes)
-    .map((node, index) => convertNodeToElement(node, index));
+    .map((node, index) => {
+      TransformTag(node);
+      return convertNodeToElement(node, index);
+    })
 
+}
+
+function TransformTag( node ) {
+  if(node.type === 'tag' && node.attribs.tagtype) {
+      var attr = JSON.parse(JSON.stringify( node.attribs ));
+      switch( node.attribs.tagtype ) {
+        case 'MEMBER':
+          node.name = 'a';
+          node.attribs = {
+            href : '/profile/' + attr.pid,
+            target : '_blank',
+          }
+        break;
+        case 'HYPERLINK':
+        break;
+        default:
+        break;
+      }
+    }
+  
 }
