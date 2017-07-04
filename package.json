@@ -73,7 +73,7 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.0",
+    "htmlparser2": "^3.9.2",
     "c_wap_module": "git+https://github.com/DerekHung/react-semantic-module.git#master"
   },
   "peerDependencies": {
