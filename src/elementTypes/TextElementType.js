@@ -7,7 +7,9 @@
 export default function TextElementType(node) {
 
   // React will accept plain text for rendering so just return the node data
-  node.data = node.data.replace('&lt;','<').replace('&gt;', '>');
+  node.data = node.data.replace(/&lt;/g,'<').replace(/&gt;/g, '>');
+  node.data = node.data.replace(/&nbsp;/g, ' ');
+  node.data = node.data.replace(/&amp;/g, '&');
   return node.data;
 
 }
