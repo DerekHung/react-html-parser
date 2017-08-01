@@ -39,15 +39,25 @@ export default function ProcessNodes(nodes) {
     })
 
 }
+function _checkLinkValue(value) {
+  const splitString = value.split('//');
+  if( splitString[0].indexOf('http') < 0 ) return 'http://' + value;
+  else return value;
+}
 
 function TransformTag( node ) {
+  if(node.type === 'tag' && node.name === 'a') {
+    const link = _checkLinkValue(node.attribs.href);
+    node.attribs.href = link;
+  }
+
   if(node.type === 'tag' && node.attribs.tagtype) {
       var attr = JSON.parse(JSON.stringify( node.attribs ));
       switch( node.attribs.tagtype ) {
         case 'MEMBER':
           node.name = 'a';
           node.attribs = {
-            href : '/profile/' + attr.pid,
+            href : 'https://profile/' + attr.pid,
             target : '_blank',
           }
         break;
