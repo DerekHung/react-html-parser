@@ -57,7 +57,7 @@ function TransformTag( node ) {
         case 'MEMBER':
           node.name = 'a';
           node.attribs = {
-            href : 'https://profile/' + attr.pid,
+            href : '/profile/' + attr.pid,
             target : '_blank',
           }
         break;

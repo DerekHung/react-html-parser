@@ -10,6 +10,8 @@ export default function TextElementType(node) {
   node.data = node.data.replace(/&lt;/g,'<').replace(/&gt;/g, '>');
   node.data = node.data.replace(/&nbsp;/g, ' ');
   node.data = node.data.replace(/&amp;/g, '&');
+  node.data = node.date.replace(/&quot;/g, '"');
+  node.data = node.data.replace(/&apos;/g, "'");
   return node.data;
 
 }
